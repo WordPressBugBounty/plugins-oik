@@ -1,0 +1,34 @@
+{
+	"name": "oik",
+	"version": "4.10.3",
+	"description": "OIK Information Kit",
+	"author": "bobbingwide",
+	"license": "GPL-2.0-or-later",
+	"repository": {
+		"type": "git",
+		"url": "git://github.com/bobbingwide/oik.git"
+	},
+	"main": "build/index.js",
+	"scripts": {
+		"build": "wp-scripts build",
+		"format": "wp-scripts format",
+		"lint:css": "wp-scripts lint-style",
+		"lint:js": "wp-scripts lint-js",
+		"start": "wp-scripts start",
+		"packages-update": "wp-scripts packages-update",
+		"dev": "wp-scripts start",
+		"makepot": "wp i18n make-pot . languages/oik.pot --ignore-domain --domain=oik --exclude=node_modules,vendor,src/*.js,tests",
+		"makejson": "wp i18n make-json languages --no-purge",
+		"l10n": "l10n oik"
+	},
+	"dependencies": {
+		"@wordpress/block-editor": "^12.26.0",
+		"@wordpress/blocks": "^12.35.0",
+		"@wordpress/i18n": "^4.58.0",
+		"clsx": "^2.1.1",
+		"postcss": "^8.4.31"
+	},
+	"devDependencies": {
+		"@wordpress/scripts": "^27.9.0"
+	}
+}
