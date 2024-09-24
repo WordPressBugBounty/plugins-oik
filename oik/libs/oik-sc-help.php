@@ -1,6 +1,6 @@
-<?php // (C) Copyright Bobbing Wide 2012-2023
+<?php // (C) Copyright Bobbing Wide 2012-2024
 if ( !defined( "OIK_SC_HELP_INCLUDED" ) ) {
-define( "OIK_SC_HELP_INCLUDED", "3.4.1" );
+define( "OIK_SC_HELP_INCLUDED", "3.5.0" );
 
 /**
  * Shortcode help 
@@ -558,7 +558,7 @@ function bw_format_skv( $value ) {
 }
 
 /**
- * Calls a shortcode for a simple example
+ * Calls a shortcode for a simple example.
  *
  * @uses apply_filters() rather than do_shortcode() since the shortcodes that get invoked
  * may not support the current_filter() - which on an admin page could be oik-options_page_oik_options-1
@@ -578,7 +578,7 @@ function bw_invoke_shortcode( $shortcode, $atts=null, $text=null ) {
   stag( "code" );
   e( $example ); 
   etag( "code" ); 
-  ep();
+  bw_echo( '</p>' );
   //p( $example );
 	$saved = bw_global_post();
 	$expanded = bw_expand_shortcode( $example );
