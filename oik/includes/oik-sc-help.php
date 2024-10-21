@@ -1,4 +1,4 @@
-<?php // (C) Copyright Bobbing Wide 2012-2017
+<?php // (C) Copyright Bobbing Wide 2012-2017, 2024
 
 /**
  * To maintain backward compatibility with plugins which are dependent upon oik
@@ -96,6 +96,7 @@ function oik_lazy_sc__help( $help, $shortcode ) {
 		case "bw_wpadmin": $l10n_help = __( 'Site: link to wp-admin', 'oik' ); break;
 		case "bw_wtf": $l10n_help = __( 'WTF', 'oik' ); break;
 		case "bw_youtube": $l10n_help = __( 'Follow me on YouTube', 'oik' ); break;
+		case "bw_x": $l10n_help = __( 'Follow me on X', 'oik' ); break;
 		case "bwtrace": $l10n_help = __( 'Trace facility form', 'oik' ); break;
 		case "caption": $l10n_help = __( 'Display the caption for an image. Standard WordPress shortcode', 'oik' ); break;
 		case "clear": $l10n_help = __( 'Clear divs ', 'oik' ); break;
