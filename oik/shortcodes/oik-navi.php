@@ -1,4 +1,4 @@
-<?php // (C) Copyright Bobbing Wide 2014-2019, 2023
+<?php // (C) Copyright Bobbing Wide 2014-2019, 2023, 2024
 
 /**
  * Return the next unique shortcode ID
@@ -26,7 +26,7 @@ function bw_get_shortcode_id( $set=false ) {
  * <a href=url?bwscid123=1> page 1 </a>
  * <a href=url?bwscid123=2> page 2 </a>
  * 
- * If they've chosen another link the value is not set.   *
+ * If they've chosen another link the value is not set.
  *
  * @param integer - the ID of the bwscidnnn field 
  * @return integer - the required page ID, defaults to 1 if not set
@@ -79,7 +79,6 @@ function bw_check_paged_shortcode( $bwscid ) {
  * @param array $atts
  */
 function oik_navi_lazy_paginate_links( $atts ) {
-	//	bw_trace2();
   $bwscid = bw_array_get( $atts, "bwscid", null );
   $bwscpage = bw_array_get( $atts, "paged", null );
   $bw_query = bw_array_get( $atts, "bw_query", null );
@@ -132,7 +131,7 @@ function bw_navi_paginate_links( $id, $page, $pages ) {
                , "before_page_number" => "["
                , "after_page_number" => "]"
                , "add_args" => false
-	            , "type" => "plain"
+	            , "type" => "array"
                );
   // We don't need to worry about these yet             
   //  'show_all' => false,
@@ -144,13 +143,32 @@ function bw_navi_paginate_links( $id, $page, $pages ) {
   //  'type' => 'plain',
   //  'add_args' => false, // array of query args to add
   //  'add_fragment' => '',
-  $links = paginate_links( $args ); 
+  $links = paginate_links( $args );
+  if ( is_array( $links )) {
+	  $links=implode( '', $links );
+  }
+  $links = bw_navi_add_rel( $links);
   //bw_trace2( $args, "args" );
   //bw_trace2( $links, "links", false );
 	sdiv( "page-numbers pagination");
     e( $links );
     ediv();
 	$_SERVER['REQUEST_URI'] = $saved_request_uri;
+}
+
+/**
+ * Adds rel attr to each link.
+ *
+ * @param $links
+ * @param $rel string default noindex.
+ *
+ * @return array|string|string[]
+ */
+function bw_navi_add_rel( $links, $rel="noindex" ) {
+	if ( $links ) {
+		$links=str_replace( '<a class', '<a rel=' . $rel . ' class', $links );
+	}
+	return $links;
 }
 
 /**

@@ -36,6 +36,15 @@ Six blocks for the Gutenberg block editor.
 These blocks build on existing functionality. They can be a lot easier to use than the original shortcodes.
 
 == Upgrade Notice ==
+= 4.15.0 = 
+Implements several improvements required by dependent plugins. 
+
+= 4.14.1 = 
+Tested with WordPress 6.7.1 and PHP 8.4 
+
+= 4.14.0 = 
+Improved support for block based themes. New shortcode [bw_x] to replace [bw_twitter].
+
 = 4.13.0 = 
 Removes dependency on bobbfunc's ep(), which has been renamed to bw_ep() to avoid a function name conflict 
 
@@ -504,6 +513,36 @@ There are many changes in version 1.11 to support lazy invocation of code.
 Some plugins have been created as separate plugins (e.g. uk-tides). Others have been changed so that you can activate them by changing oik settings, so are no longer activatable.
 
 == Changelog ==
+= 4.15.0 = 
+* Changed: Don't pass format parameter to bw_get_posts() #241
+* Changed: Attempt to reduce the width of select lists in meta boxes
+* Added: Add bw_theme_field__post_parent() #238
+* Changed: don't exclude the current post in bw_load_noderef and bw_load_noderef2_flat #239
+* Added: Invoke bw_post_array filter #240
+* Tested: With WordPress 6.7.1 and WordPress Multisite
+* Tested: With PHP 8.3 & PHP 8.4
+* Tested: With PHPUnit 9.6, 10 and 11
+
+= 4.14.1 = 
+* Changed: Support PHPUnit 10 & 11 #220
+* Changed: Latest version of Genesis-oik is v1.4.0 #220
+* Changed: Enable className and customClassName on follow-me block #220
+* Changed: Don't str_replace( null ) #220 #235
+* Changed: Avoid notices when $lat and $long uninitialized #220
+* Changed: Don't str_replace() null #220
+* Changed: Set rel=noindex on shortcode pagination links #235
+* Tested: With WordPress 6.7.1 and WordPress Multisite
+* Tested: With PHP 8.3 & PHP 8.4
+* Tested: With PHPUnit 9.6, 10 and 11
+
+= 4.14.0 = 
+* Changed: Update [bw_follow_me] to support X #231
+* Added: [bw_x] shortcode to replace [bw_twitter] #231
+* Added: Add bw_block_theme_extras. Automatically enable oik shortcodes for block based themes #233
+* Tested: With WordPress 6.7-beta3 and WordPress Multisite
+* Tested: With PHP 8.3
+* Tested: With PHPUnit 9.6 
+
 = 4.13.0 = 
 * Changed: Remove dependency on bobbfunc's ep() #232
 * Tested: With WordPress 6.6.2 and WordPress Multisite
