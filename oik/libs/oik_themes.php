@@ -1,6 +1,6 @@
-<?php // (C) Copyright Bobbing Wide 2013-2023
+<?php // (C) Copyright Bobbing Wide 2013-2026
 if ( !defined( "OIK_THEMES_INCLUDED" ) ) {
-	define( "OIK_THEMES_INCLUDED", "0.2.4" );
+	define( "OIK_THEMES_INCLUDED", "0.3.0" );
 
 /**
  * Library: oik_themes
@@ -255,7 +255,7 @@ function oik_themes_settings() {
 										, __( "version", null )
 										, __( "server", null ) 
 										, __( "apikey", null )
-										, __( "actions", null ) ) );
+										, __( "actions", null ) ), 'tr', 'th' );
   etag( "thead");
   _oik_themes_settings_table();
   etag( "table" );

@@ -3,8 +3,8 @@ Contributors: bobbingwide, vsgloik
 Donate link: https://www.oik-plugins.com/oik/oik-donate/
 Tags: blocks, shortcodes, shortcode, advanced
 Requires at least: 5.5
-Tested up to: 6.8.2
-Stable tag: 4.15.4
+Tested up to: 7.1
+Stable tag: 4.16.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Gutenberg compatible: Yes
@@ -81,16 +81,11 @@ Yes - see above
 = Where are the blocks documented? =
 [oik blocks](https://www.oik-plugins.com/oik-plugins/oik)
 
-For blocks of many other WordPress plugins ( including WordPress SEO, Jetpack, WooCommerce ) see [blocks.wp-a2z.org](https://blocks.wp-a2z.org)
-
 = Where are the shortcodes documented? =
 
 [oik shortcodes](https://www.oik-plugins.com/shortcodes)
 
 The shortcode reference includes the standard WordPress shortcodes and help for shortcodes provided by other oik plugins.
-
-For other popular WordPress plugins (e.g. Jetpack, Easy-Digital-Downloads, WooCommerce) see [WP-a2z.org](https://wp-a2z.org/sitemap/sites)
-
 
 == Screenshots ==
 1. oik options - Options
@@ -105,15 +100,16 @@ For other popular WordPress plugins (e.g. Jetpack, Easy-Digital-Downloads, WooCo
 10. oik options - Buttons
 
 == Upgrade Notice ==
-= 4.15.4 = 
-Update for a security fix.
+= 4.16.0 = 
+Upgrade for many accessibility (a11y) improvements for both the front end and admin areas plus a security fix.
  
 == Changelog ==
-= 4.15.4 =
-* Fixed: Security: sanitize the class attribute for bw_accordion shortcode. Props: Muhammad Yudha - DJ
-* Tested: With WordPress 6.8.3 and WordPress Multisite
+= 4.16.0 = 
+* Fixed: Security: Don't attempt to return shortcode help for some requests. Props: youssef 3id #246
+* Changed: Update tests for WordPress 7.0 TRAC 64500 #247
+* Tested: With WordPress 7.0 and 7.1 and WordPress Multisite
 * Tested: With PHP 8.3 and PHP 8.4
-* Tested: With PHPUnit 9, 10 & 11
+* Tested: With PHPUnit 10 & 11
 
 == Further reading ==
 If you want to read more about the oik plugins then please visit the

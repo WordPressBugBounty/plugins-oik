@@ -320,9 +320,37 @@ div.bw_accordion_item summary {
     display: list-item;
 }
 
+/**
+  Attempted a11y improvement to avoid Color Contrast messages from WAVE for oik's dashboard postboxes.
+  These also target the core dashboard items.
+  They work for the Default Administration Color Scheme with WordPress 6.9
+ */
+button.handlediv span.screen-reader-text,
+button.handle-order-lower span.screen-reader-text,
+button.handle-order-higher span.screen-reader-text,
+.community-events-footer .screen-reader-text {
+    color: #000000;
+    background-color: #ffffff;
+}
 
- 
+.community-events-footer {
+    color: #74747b;
+}
+.row-actions {
+    color: #6e7177;
+}
 
+.activity-block .subsubsub li {
+    color: #74747b;
+}
+
+div.bw_grid div {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: 1fr;
+    gap: 1.5%;
+    margin-bottom: 10px;
+}
 
 
 

@@ -1,6 +1,6 @@
-<?php // (C) Copyright Bobbing Wide 2012-2024
+<?php // (C) Copyright Bobbing Wide 2012-2026
 if ( !defined( "OIK_SC_HELP_INCLUDED" ) ) {
-define( "OIK_SC_HELP_INCLUDED", "3.5.0" );
+define( "OIK_SC_HELP_INCLUDED", "3.5.2" );
 
 /**
  * Shortcode help 
@@ -57,7 +57,10 @@ function bw_form_sc_parm_help( $parameter, $shortcode ) {
 	if ( function_exists( "oik_get_plugins_server" ) ) {
 		$url = oik_get_plugins_server();
 		$url .= "/oik_sc_param/$shortcode-$parm-parameter";
-		$ret = retlink( null, $url, $parameter, "$shortcode $parameter parameter" );
+		if ( $parameter === 'link' || $parameter === 'more') {
+			$parameter .= '<span class="screen-reader-text"> shortcode parameter</span>';
+		}
+		$ret = retlink( null, $url, $parameter, null /*"$shortcode $parameter parameter" */, null /*, kv( "aria-label", "$shortcode parameter" )*/);
 	} else {
 		$ret = null;
 	}
@@ -149,14 +152,19 @@ function _bw_lazy_sc_help( $shortcode ) {
 }
 
 /**
- * Display a shortcode example
- * 
+ * Displays a shortcode example.
+ *
+ * Sanitize the shortcode and only call the example function if the escaped version is the same as the original.
+ *
  * @param string $shortcode
  * @param array $atts - shortcode example parameters
  */
 function bw_lazy_sc_example( $shortcode, $atts=null ) {
-  $funcname = bw_load_shortcode_suffix( $shortcode, "__example" ); 
-  $funcname( $shortcode, $atts ); 
+    $shortcode_escaped = esc_html( $shortcode );
+    if ( $shortcode_escaped === $shortcode ) {
+        $funcname = bw_load_shortcode_suffix($shortcode, "__example");
+        $funcname($shortcode, $atts);
+    }
 }
 
 /**
@@ -238,13 +246,13 @@ function _sc__snippet( $shortcode="bw_code", $atts=null ) {
 	$formatted_example = bw_expand_shortcode( $example );
   bw_trace2( $formatted_example, "formatted example" );
   $escaped_example = esc_html( $formatted_example );
-  stag( 'p', null, null, 'lang="HTML" escaped="true"' );
+  stag( 'p', 'escaped_html', null) ; // 'lang="HTML" escaped="true"' );
   e( $escaped_example );
   etag( "p" );
   $latest_html = bw_report_scripts();
 	if ( $latest_html ) {
 		$escaped_example = esc_html( $latest_html );
-		stag( 'p', null, null, 'lang="HTML" escaped="true"' );
+		stag( 'p', 'escaped_html', null ); // , 'lang="HTML" escaped="true"' );
 		e( $escaped_example );
 		etag( "p" );
 	}
